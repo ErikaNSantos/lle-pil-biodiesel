@@ -1,0 +1,49 @@
+	% --- CONFIGURAÇÕES DE PACOTES ---
+%Comando pra conseguir identificar facilmente textos para correção
+\newcommand{\pendente}[1]{\textcolor{red}{#1}}
+% Configurações do pacote backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+\renewcommand{\backref}{}
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+	Nenhuma citação no texto.%
+	\or
+	Citado na página #2.%
+	\else
+	Citado #1 vezes nas páginas #2.%
+	\fi}
+
+% Configurações de aparência do PDF final
+\definecolor{blue}{RGB}{41, 5, 195}
+
+\makeatletter
+\hypersetup{
+	pdftitle={\@title}, 
+	pdfauthor={\@author},
+	pdfsubject={\imprimirpreambulo},
+	pdfcreator={LaTeX with abnTeX2},
+	pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+	colorlinks=true,       		
+	linkcolor=black,     		
+	citecolor=black,     		
+	filecolor=black,     		
+	urlcolor=black,      		
+	bookmarksdepth=4
+}
+\makeatother
+
+% Espaçamentos entre linhas e parágrafos 
+\setlength{\parindent}{1.3cm}
+\setlength{\parskip}{0.2cm} 
+
+% Ajustes de hifenização e quebra de linha
+\sloppy
+\clubpenalty=10000
+\widowpenalty=10000
+\hyphenpenalty=10000
+
+% Compila o indice
+\makeindex
+
+%Comando pra dar espaço na parte da reação de transesterificação
+\newcommand{\etapaspace}{\vspace{1.5em}}

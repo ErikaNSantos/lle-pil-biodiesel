@@ -1,0 +1,14 @@
+\renewcommand{\imprimircapa}{%
+\begin{capa}%
+    % Remove cabeçalhos e rodapés desta página
+    \thispagestyle{empty} 
+    
+    % Insere o PDF ocupando a página inteira
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[inner sep=0pt] at (current page.center) {%
+            % ATENÇÃO: Verifique se o nome do arquivo na pasta 'figuras' é este mesmo!
+            \includegraphics[width=\paperwidth, height=\paperheight]{imagens/modelo_capa.pdf}%
+        };
+    \end{tikzpicture}
+\end{capa}
+}

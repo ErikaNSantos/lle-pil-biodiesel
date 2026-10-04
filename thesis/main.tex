@@ -1,0 +1,100 @@
+\documentclass[
+    12pt,               % Tamanho da fonte
+    openright,          % Capítulos começam em pág ímpar
+    oneside,            % Imprime apenas frente (se quiser frente e verso, use twoside)
+    a4paper,            % Tamanho do papel
+    english,            % Idioma adicional
+    brazil              % Idioma principal
+]{abntex2}
+
+% --- 1. CONFIGURAÇÕES ---
+\input{config/Preamble}  % Seus pacotes (usepackage...)
+\input{config/Settings}  % Suas configurações de link e cores
+
+% --- 2. DADOS DO TRABALHO (Para a Folha de Rosto e Metadados) ---
+\titulo{PREDIÇÃO DO EQUILÍBRIO LÍQUIDO-LÍQUIDO DE SISTEMAS DE PRODUÇÃO DE BIODIESEL COM LÍQUIDOS IÔNICOS PRÓTICOS COMO COSSOLVENTES}
+\autor{ÉRIKA NOGUEIRA SANTOS}
+\local{SALVADOR - BA}
+\data{2026}
+\orientador{Prof. Dra. Silvana Mattedi e Silva}
+\instituicao{%
+  UNIVERSIDADE FEDERAL DA BAHIA -- UFBA
+  \par
+  ESCOLA POLITÉCNICA
+  \par
+  CURSO DE GRADUAÇÃO EM ENGENHARIA QUÍMICA}
+\tipotrabalho{Monografia (Graduação)}
+\preambulo{Trabalho de Conclusão de Curso apresentado ao Programa de Graduação em Engenharia Química da Universidade Federal da Bahia como requisito parcial para obtenção do título de Engenheiro Químico.}
+
+% --- 3. INÍCIO DO DOCUMENTO ---
+\begin{document}
+
+\selectlanguage{brazil}
+\frenchspacing 
+
+% --- ELEMENTOS PRÉ-TEXTUAIS ---
+\pretextual
+
+% 1. Capa (Personalizada)
+\input{pretextuais/capa}
+%\imprimircapa
+
+% 2. Folha de Rosto (Obrigatória com *)
+\imprimirfolhaderosto*
+
+% 3. Ficha Catalográfica (Geralmente é um PDF fornecido pela biblioteca)
+% \begin{fichacatalografica}
+% \includepdf{figuras/ficha-catalografica.pdf}
+% \end{fichacatalografica}
+
+% 4. Folha de Aprovação (Inserir o arquivo que criamos acima)
+% Se der erro "File not found", verifique se o arquivo está na pasta 'pretextuais'
+\input{pretextuais/folha-aprovacao}
+
+% 5. Dedicatória
+\input{pretextuais/dedicatorias}
+
+% 6. Agradecimentos
+\input{pretextuais/agradecimentos}
+
+% 7. Epígrafe
+\input{pretextuais/epigrafe}
+
+% 8. Resumos
+\input{pretextuais/Resumo-PT}
+\input{pretextuais/Resumo-EN}
+
+% Listas
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+% --- ELEMENTOS TEXTUAIS (CAPÍTULOS) ---
+\textual
+
+\include{capitulos/1_introducao}
+\include{capitulos/2_fundamentacao_teorica}
+\include{capitulos/3_metodologia}
+\include{capitulos/4_resultados}
+\include{capitulos/5_conclusao}
+
+% --- ELEMENTOS PÓS-TEXTUAIS ---
+\postextual
+
+\bibliography{referencias} % Seu arquivo .bib
+
+% Apêndices (Se houver)	
+\begin{apendicesenv}
+     \partapendices
+     \include{capitulos/A-apendice}
+\end{apendicesenv}
+
+\end{document}

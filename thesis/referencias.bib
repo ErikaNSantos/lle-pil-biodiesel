@@ -1,0 +1,568 @@
+% ============================================================================
+% REFERENCIAS - TCC Erika Nogueira Santos
+% ----------------------------------------------------------------------------
+% NOTA SOBRE ACENTUACAO:
+% Todos os acentos em nomes de autores foram escritos com comandos TeX entre
+% chaves ({\'A}, {\'i}, {\"u}, {\o}, {\v c}, {\l}, {\DJ}) em vez de caracteres
+% UTF-8 diretos. Isso e OBRIGATORIO porque:
+%   (a) o BibTeX ordena usando purify$, que remove o comando de acento e
+%       enxerga "Alvarez"; com "A" acentuado em UTF-8 os bytes ordenam depois
+%       de "Z", jogando a entrada para o fim da lista;
+%   (b) o abntex2cite aplica change.case$ para deixar o sobrenome em caixa
+%       alta, e essa rotina nao reconhece bytes UTF-8, produzindo "DOMiNGUEZ".
+% Nao substituir por caracteres acentuados diretos.
+% ----------------------------------------------------------------------------
+% Entradas em ordem alfabetica de chave (a ordem no arquivo nao afeta a
+% ordenacao final, feita pelo BibTeX, mas facilita a manutencao).
+% ============================================================================
+
+
+@article{alvarez2010,
+  author  = {{\'A}lvarez, V{\'i}ctor H. and Dosil, Noelia and
+             Gonzalez-Cabaleiro, Rebeca and Mattedi, Silvana and
+             Martin-Pastor, Manuel and Iglesias, Miguel and
+             Navaza, Jos{\'e} M.},
+  title   = {Br{\o}nsted ionic liquids for sustainable processes:
+             synthesis and physical properties},
+  journal = {Journal of Chemical \& Engineering Data},
+  volume  = {55},
+  number  = {2},
+  pages   = {625--632},
+  year    = {2010},
+  doi     = {10.1021/je900550v}
+}
+
+@article{avogadro2012,
+  author  = {Hanwell, Marcus D. and Curtis, Donald E. and
+             Lonie, David C. and Vandermeersch, Tim and Zurek, Eva and
+             Hutchison, Geoffrey R.},
+  title   = {Avogadro: an advanced semantic chemical editor,
+             visualization, and analysis platform},
+  journal = {Journal of Cheminformatics},
+  volume  = {4},
+  number  = {1},
+  pages   = {17},
+  year    = {2012},
+  doi     = {10.1186/1758-2946-4-17}
+}
+
+% ATENCAO: titulo, autores, volume, paginas e DOI estavam TODOS incorretos.
+% A entrada anterior descrevia um artigo de ELL ternario que nao corresponde
+% ao PDF do projeto. Dados abaixo conferidos no PDF e no NIST/ThermoML.
+% Verificar se este artigo sustenta a afirmacao feita na Secao 2.5 sobre a
+% lacuna parametrica do UNIFAC para liquidos ionicos (ver observacoes).
+@article{bahadur2015,
+  author  = {Bahadur, I. and Pal, A. and Gmehling, J. and Hector, T. and
+             Tumba, K. and Singh, S. and Ebenso, E. E.},
+  title   = {(Vapour + liquid) equilibria, ({VLE}) excess molar enthalpies
+             and infinite dilution activity coefficients of selected binary
+             systems involving n-hexyl pyridinium
+             bis(trifluoromethylsulphonyl)imide ionic liquid: experimental
+             and predictions using modified {UNIFAC} ({Dortmund})},
+  journal = {The Journal of Chemical Thermodynamics},
+  volume  = {90},
+  pages   = {92--99},
+  year    = {2015},
+  doi     = {10.1016/j.jct.2015.06.023}
+}
+
+@article{baker1982,
+  author  = {Baker, Lee E. and Pierce, Alan C. and Luks, Kraemer D.},
+  title   = {Gibbs energy analysis of phase equilibria},
+  journal = {Society of Petroleum Engineers Journal},
+  volume  = {22},
+  number  = {5},
+  pages   = {731--742},
+  year    = {1982},
+  doi     = {10.2118/9806-PA}
+}
+
+@article{becke1993,
+  author  = {Becke, Axel D.},
+  title   = {Density-functional thermochemistry. {III}. {The} role of
+             exact exchange},
+  journal = {The Journal of Chemical Physics},
+  volume  = {98},
+  number  = {7},
+  pages   = {5648--5652},
+  year    = {1993},
+  doi     = {10.1063/1.464913}
+}
+
+@article{bessa2016,
+  author  = {Bessa, Larissa C. B. A. and Ferreira, Marcela C. and
+             Abreu, Charlles R. A. and Batista, Eduardo A. C. and
+             Meirelles, Antonio J. A.},
+  title   = {A new {UNIFAC} parameterization for the prediction of
+             liquid-liquid equilibrium of biodiesel systems},
+  journal = {Fluid Phase Equilibria},
+  volume  = {425},
+  pages   = {98--107},
+  year    = {2016},
+  doi     = {10.1016/j.fluid.2016.05.020}
+}
+
+% Chave mantida como "brasilpnpb2004" para nao quebrar os \cite existentes,
+% mas note que a lei e de 2005.
+@misc{brasilpnpb2004,
+  author = {{BRASIL}},
+  title  = {Lei n{\textordmasculine} 11.097, de 13 de janeiro de 2005},
+  year   = {2005},
+  note   = {Disp{\~o}e sobre a introdu{\c c}{\~a}o do biodiesel na matriz
+            energ{\'e}tica brasileira. Di{\'a}rio Oficial da Uni{\~a}o,
+            Bras{\'i}lia, DF}
+}
+
+@article{dabdoub2009,
+  author  = {Dabdoub, Miguel J. and Bronzel, Jo{\~a}o L. and
+             Rampin, M{\'a}rcia A.},
+  title   = {Biodiesel: vis{\~a}o cr{\'i}tica do status atual e
+             perspectivas na academia e na ind{\'u}stria},
+  journal = {Qu{\'i}mica Nova},
+  volume  = {32},
+  number  = {3},
+  pages   = {776--792},
+  year    = {2009},
+  doi     = {10.1590/S0100-40422009000300021}
+}
+
+% ATENCAO: titulo, autores, periodico, volume, paginas e DOI estavam todos
+% incorretos. Dados abaixo conferidos no PDF do projeto e no NIST/ThermoML.
+% Note que os prenomes corretos sao Irene e Angeles (nao Inmaculada e Angel),
+% e que ha um quarto autor (Jose Palomar) que estava ausente.
+@article{dominguez2014,
+  author  = {Dom{\'i}nguez, Irene and Gonz{\'a}lez, Emilio J. and
+             Palomar, Jos{\'e} and Dom{\'i}nguez, {\'A}ngeles},
+  title   = {Phase behavior of ternary mixtures \{aliphatic hydrocarbon +
+             aromatic hydrocarbon + ionic liquid\}: experimental {LLE}
+             data and their modeling by {COSMO-RS}},
+  journal = {The Journal of Chemical Thermodynamics},
+  volume  = {77},
+  pages   = {222--229},
+  year    = {2014},
+  doi     = {10.1016/j.jct.2013.11.020}
+}
+
+% ATENCAO: os autores estavam incorretos. Nao ha "Martinez, Gloria" nem
+% "Garcia, Laureano"; a segunda autora e Ana Pardal. Conferido no PDF.
+@article{encinar2016,
+  author  = {Encinar, Jos{\'e} M. and Pardal, Ana and S{\'a}nchez, Nuria},
+  title   = {An improvement to the transesterification process by the use
+             of co-solvents to produce biodiesel},
+  journal = {Fuel},
+  volume  = {166},
+  pages   = {51--58},
+  year    = {2016},
+  doi     = {10.1016/j.fuel.2015.10.110}
+}
+
+% ATENCAO: o quarto autor estava grafado "de Soares, Rafael P.", o que faria
+% o BibTeX tratar "de Soares" como sobrenome. O correto e Soares, Rafael de P.
+% O sobrenome da segunda autora e Flores (sem circunflexo).
+@article{ferrarini2018,
+  author  = {Ferrarini, F. and Flores, G. B. and Muniz, A. R. and
+             Soares, R. de P.},
+  title   = {An open and extensible sigma-profile database for
+             {COSMO}-based models},
+  journal = {AIChE Journal},
+  volume  = {64},
+  number  = {9},
+  pages   = {3443--3455},
+  year    = {2018},
+  doi     = {10.1002/aic.16194}
+}
+
+@article{fredenslund1975,
+  author  = {Fredenslund, Aage and Jones, Russell L. and
+             Prausnitz, John M.},
+  title   = {Group-contribution estimation of activity coefficients in
+             nonideal liquid mixtures},
+  journal = {AIChE Journal},
+  volume  = {21},
+  number  = {6},
+  pages   = {1086--1099},
+  year    = {1975},
+  doi     = {10.1002/aic.690210607}
+}
+
+% Artigo com 42 autores. A NBR 6023:2018 permite indicar apenas o primeiro
+% seguido de "et al." quando ha mais de tres autores, mas a lista completa
+% esta abaixo caso se prefira mante-la.
+@article{gamess2020,
+  author  = {Barca, Giuseppe M. J. and Bertoni, Colleen and
+             Carrington, Laura and Datta, Dipayan and De Silva, Nuwan and
+             Deustua, J. Emiliano and Fedorov, Dmitri G. and
+             Gour, Jeffrey R. and Gunina, Anastasia O. and Guidez, Emilie and
+             Harville, Taylor and Irle, Stephan and Ivanic, Joe and
+             Kowalski, Karol and Leang, Sarom S. and Li, Hui and Li, Wei and
+             Lutz, Jesse J. and Magoulas, Ilias and Mato, Joani and
+             Mironov, Vladimir and Nakata, Hiroya and Pham, Buu Q. and
+             Piecuch, Piotr and Poole, David and Pruitt, Spencer R. and
+             Rendell, Alistair P. and Roskop, Luke B. and
+             Ruedenberg, Klaus and Sattasathuchana, Tosaporn and
+             Schmidt, Michael W. and Shen, Jun and Slipchenko, Lyudmila and
+             Sosonkina, Masha and Sundriyal, Vaibhav and Tiwari, Ananta and
+             Galvez Vallejo, Jorge L. and Westheimer, Bryce and
+             W{\l}och, Marta and Xu, Peng and Zahariev, Federico and
+             Gordon, Mark S.},
+  title   = {Recent developments in the general atomic and molecular
+             electronic structure system},
+  journal = {The Journal of Chemical Physics},
+  volume  = {152},
+  number  = {15},
+  pages   = {154102},
+  year    = {2020},
+  doi     = {10.1063/5.0005188}
+}
+
+@article{gerber2010,
+  author  = {Gerber, Renan P. and Soares, Rafael de P.},
+  title   = {Prediction of infinite-dilution activity coefficients using
+             {UNIFAC} and {COSMO-SAC} variants},
+  journal = {Industrial \& Engineering Chemistry Research},
+  volume  = {49},
+  number  = {16},
+  pages   = {7488--7496},
+  year    = {2010},
+  doi     = {10.1021/ie901947m}
+}
+
+% ATENCAO: titulo, autores, numero e paginas estavam incorretos. O artigo do
+% PDF e do v.13 n.3 (p. 175-186), tem sete autores, e a primeira autora e
+% I. A. G. Gomez (nao "Amanda V. A. Gomez"). Conferir o DOI na pagina da
+% revista, pois nao foi possivel valida-lo.
+@article{gomez2019,
+  author  = {Gomez, I. A. G. and Gomes, K. B. and
+             Oliveira, V. I. M. X. de and Mattedi, S. and Simonelli, G. and
+             Santos, L. C. L. and Lobato, A. K. C. L.},
+  title   = {Effects of the addition of {[2HEA][Hx]} on biodiesel synthesis
+             using methanol and methanol/ethanol mixture},
+  journal = {Brazilian Journal of Petroleum and Gas},
+  volume  = {13},
+  number  = {3},
+  pages   = {175--186},
+  year    = {2019}
+}
+
+% ATENCAO: o ano correto e 2025 (nao 2024, como sugere a chave). A chave foi
+% mantida para nao quebrar \cite existentes. Verificar se ainda e citada.
+@article{hayer2024,
+  author  = {Hayer, Nicolas and Hasse, Hans and Jirasek, Fabian},
+  title   = {Modified {UNIFAC} 2.0: a group-contribution method completed
+             with machine learning},
+  journal = {Industrial \& Engineering Chemistry Research},
+  volume  = {64},
+  number  = {20},
+  pages   = {10304--10313},
+  year    = {2025},
+  doi     = {10.1021/acs.iecr.5c00077}
+}
+
+@article{hayer2025,
+  author  = {Hayer, Nicolas and Wendel, Thorsten and Mandt, Stephan and
+             Hasse, Hans and Jirasek, Fabian},
+  title   = {Advancing thermodynamic group-contribution methods by machine
+             learning: {UNIFAC} 2.0},
+  journal = {Chemical Engineering Journal},
+  volume  = {504},
+  pages   = {158667},
+  year    = {2025},
+  doi     = {10.1016/j.cej.2024.158667}
+}
+
+@article{hsieh2010,
+  author  = {Hsieh, Chieh-Ming and Sandler, Stanley I. and
+             Lin, Shiang-Tai},
+  title   = {Improvements of {COSMO-SAC} for vapor-liquid and liquid-liquid
+             equilibrium predictions},
+  journal = {Fluid Phase Equilibria},
+  volume  = {297},
+  number  = {1},
+  pages   = {90--97},
+  year    = {2010},
+  doi     = {10.1016/j.fluid.2010.06.011}
+}
+
+@techreport{ipcc2023,
+  author      = {{INTERGOVERNMENTAL PANEL ON CLIMATE CHANGE}},
+  title       = {Climate change 2023: synthesis report},
+  institution = {IPCC},
+  year        = {2023},
+  address     = {Geneva},
+  note        = {Contribution of Working Groups I, II and III to the
+                 Sixth Assessment Report}
+}
+
+@article{klamt1993,
+  author  = {Klamt, Andreas and Sch{\"u}{\"u}rmann, Gerrit},
+  title   = {{COSMO}: a new approach to dielectric screening in solvents
+             with explicit expressions for the screening energy and its
+             gradient},
+  journal = {Journal of the Chemical Society, Perkin Transactions 2},
+  pages   = {799--805},
+  year    = {1993},
+  doi     = {10.1039/P29930000799}
+}
+
+@article{klamt1995,
+  author  = {Klamt, Andreas},
+  title   = {Conductor-like screening model for real solvents: a new
+             approach to the quantitative calculation of solvation
+             phenomena},
+  journal = {The Journal of Physical Chemistry},
+  volume  = {99},
+  number  = {7},
+  pages   = {2224--2235},
+  year    = {1995},
+  doi     = {10.1021/j100007a062}
+}
+
+@article{leung2010,
+  author  = {Leung, Dennis Y. C. and Wu, Xuan and Leung, M. K. H.},
+  title   = {A review on biodiesel production using catalyzed
+             transesterification},
+  journal = {Applied Energy},
+  volume  = {87},
+  number  = {4},
+  pages   = {1083--1095},
+  year    = {2010},
+  doi     = {10.1016/j.apenergy.2009.10.006}
+}
+
+@article{lin2002,
+  author  = {Lin, Shiang-Tai and Sandler, Stanley I.},
+  title   = {A priori phase equilibrium prediction from a segment
+             contribution solvation model},
+  journal = {Industrial \& Engineering Chemistry Research},
+  volume  = {41},
+  number  = {5},
+  pages   = {899--913},
+  year    = {2002},
+  doi     = {10.1021/ie001047w}
+}
+
+% Faltavam quatro dos seis autores.
+@article{ma2016,
+  author  = {Ma, Yingqun and Wang, Qunhui and Zheng, Lu and Gao, Zhen and
+             Wang, Qiang and Ma, Yuhui},
+  title   = {Mixed methanol/ethanol on transesterification of waste cooking
+             oil using {Mg/Al} hydrotalcite catalyst},
+  journal = {Energy},
+  volume  = {107},
+  pages   = {523--531},
+  year    = {2016},
+  doi     = {10.1016/j.energy.2016.04.066}
+}
+
+@article{magnussen1981,
+  author  = {Magnussen, Thomas and Rasmussen, Peter and
+             Fredenslund, Aage},
+  title   = {{UNIFAC} parameter table for prediction of liquid-liquid
+             equilibriums},
+  journal = {Industrial \& Engineering Chemistry Process Design and
+             Development},
+  volume  = {20},
+  number  = {2},
+  pages   = {331--339},
+  year    = {1981},
+  doi     = {10.1021/i200013a024}
+}
+
+@article{michelsen1982,
+  author  = {Michelsen, Michael L.},
+  title   = {The isothermal flash problem. {Part} {I}. {Stability}},
+  journal = {Fluid Phase Equilibria},
+  volume  = {9},
+  number  = {1},
+  pages   = {1--19},
+  year    = {1982},
+  doi     = {10.1016/0378-3812(82)85001-2}
+}
+
+% ATENCAO: praticamente todos os prenomes estavam incorretos na versao
+% anterior (Normawati/Nawshad, Yusuf/Yasir, Mohamed/Muhammad, Rashid/Rahmat,
+% Humair/Hidayatullah, Suzana/Sikander, Imran/Ihsanullah). Conferido no PDF.
+@article{muhammad2015,
+  author  = {Muhammad, Nawshad and Elsheikh, Yasir A. and
+             Mutalib, Muhammad Ibrahim Abdul and Bazmi, Aqeel Ahmed and
+             Khan, Rahmat Ali and Khan, Hidayatullah and Rafiq, Sikander and
+             Man, Zakaria and Khan, Ihsanullah},
+  title   = {An overview of the role of ionic liquids in biodiesel
+             reactions},
+  journal = {Journal of Industrial and Engineering Chemistry},
+  volume  = {21},
+  pages   = {1--10},
+  year    = {2015},
+  doi     = {10.1016/j.jiec.2014.01.046}
+}
+
+@article{mullins2006,
+  author  = {Mullins, Eric and Oldland, Richard and Liu, Y. A. and
+             Wang, Shu and Sandler, Stanley I. and Chen, Chau-Chyun and
+             Zwolak, Michael and Seavey, Kevin C.},
+  title   = {Sigma-profile database for using {COSMO}-based thermodynamic
+             methods},
+  journal = {Industrial \& Engineering Chemistry Research},
+  volume  = {45},
+  number  = {12},
+  pages   = {4389--4415},
+  year    = {2006},
+  doi     = {10.1021/ie060370h}
+}
+
+% Artigo com cerca de 100 autores; "others" mantido deliberadamente, pois a
+% NBR 6023:2018 admite "et al." acima de tres autores. Se a rota NWChem foi
+% descartada e a entrada nao e mais citada, esta entrada pode ser removida.
+@article{nwchem2020,
+  author  = {Apr{\`a}, E. and Bylaska, E. J. and de Jong, W. A. and
+             Govind, N. and Kowalski, K. and Straatsma, T. P. and
+             Valiev, M. and van Dam, H. J. J. and Alexeev, Y. and
+             Anchell, J. and others},
+  title   = {{NWChem}: past, present, and future},
+  journal = {The Journal of Chemical Physics},
+  volume  = {152},
+  number  = {18},
+  pages   = {184102},
+  year    = {2020},
+  doi     = {10.1063/5.0004997}
+}
+
+@article{roosta2016,
+  author  = {Roosta, Aliakbar and Sabzpooshan, Iman},
+  title   = {Modeling the effects of cosolvents on biodiesel production},
+  journal = {Fuel},
+  volume  = {186},
+  pages   = {779--786},
+  year    = {2016},
+  doi     = {10.1016/j.fuel.2016.09.037}
+}
+
+@book{smith2005,
+  author    = {Smith, J. M. and Van Ness, H. C. and Abbott, M. M.},
+  title     = {Introduction to chemical engineering thermodynamics},
+  edition   = {7},
+  publisher = {McGraw-Hill},
+  address   = {New York},
+  year      = {2005}
+}
+
+@book{sorensen1980,
+  author    = {S{\o}rensen, J. M. and Arlt, W.},
+  title     = {Liquid-liquid equilibrium data collection: ternary systems},
+  series    = {DECHEMA Chemistry Data Series},
+  volume    = {5},
+  number    = {2},
+  publisher = {DECHEMA},
+  address   = {Frankfurt am Main},
+  year      = {1980}
+}
+
+% Faltavam quatro dos sete autores. Note que 2-HEAB e o butanoato (butanoate),
+% nao o hexanoato; conferir se o texto que cita esta referencia diz isso.
+@article{souza2025,
+  author  = {Souza, Renata C. O. and Pinto, Rafaela R. and
+             Dantas, Carlos E. S. and Pereira, Ericsem and
+             Ceriani, Roberta and Mattedi, Silvana and
+             Santos, Geormenny R.},
+  title   = {Liquid-liquid equilibria of ternary systems containing butyl
+             acetate, pentyl acetate, or hexyl acetate +
+             2-hydroxyethylammonium butanoate + ethanol at 298.15 {K}},
+  journal = {Journal of Chemical \& Engineering Data},
+  volume  = {70},
+  number  = {1},
+  pages   = {477--487},
+  year    = {2025},
+  doi     = {10.1021/acs.jced.4c00452}
+}
+
+@book{treybal1980,
+  author    = {Treybal, Robert E.},
+  title     = {Mass-transfer operations},
+  edition   = {3},
+  publisher = {McGraw-Hill},
+  address   = {New York},
+  year      = {1980}
+}
+
+% Faltavam tres dos quatro autores.
+@article{trindade2019,
+  author  = {Trindade, M. E. J. and Mattedi, S. and Simonelli, G. and
+             Santos, L. C. L.},
+  title   = {Use of protic ionic liquid ({[DETA][Hx]}) as co-solvent in
+             biodiesel production},
+  journal = {Brazilian Journal of Petroleum and Gas},
+  volume  = {13},
+  number  = {1},
+  pages   = {57--65},
+  year    = {2019}
+}
+
+@article{troter2016,
+  author  = {Troter, Dragan Z. and Todorovi{\'c}, Zoran B. and
+             {\DJ}oki{\'c}-Stojanovi{\'c}, Du{\v s}ica R. and
+             Stamenkovi{\'c}, Olivera S. and Veljkovi{\'c}, Vlada B.},
+  title   = {Application of ionic liquids and deep eutectic solvents in
+             biodiesel production: a review},
+  journal = {Renewable and Sustainable Energy Reviews},
+  volume  = {61},
+  pages   = {473--500},
+  year    = {2016},
+  doi     = {10.1016/j.rser.2016.04.011}
+}
+
+% ATENCAO: existem DOIS artigos de Verma e Sharma em 2016. A entrada anterior
+% descrevia o da RSER ("Review of process parameters..."), mas o PDF do
+% projeto e o da Fuel, transcrito abaixo. Escolher conforme o uso no texto.
+@article{verma2016,
+  author  = {Verma, Puneet and Sharma, M. P.},
+  title   = {Comparative analysis of effect of methanol and ethanol on
+             {Karanja} biodiesel production and its optimisation},
+  journal = {Fuel},
+  volume  = {180},
+  pages   = {164--174},
+  year    = {2016},
+  doi     = {10.1016/j.fuel.2016.04.035}
+}
+
+@article{wang2009,
+  author  = {Wang, Shu and Lin, Shiang-Tai and Watanasiri, Suphat and
+             Chen, Chau-Chyun},
+  title   = {Use of {GAMESS/COSMO} program in support of {COSMO-SAC} model
+             applications in phase equilibrium prediction calculations},
+  journal = {Fluid Phase Equilibria},
+  volume  = {276},
+  number  = {1},
+  pages   = {37--45},
+  year    = {2009},
+  doi     = {10.1016/j.fluid.2008.09.029}
+}
+
+@article{weigend2005,
+  author  = {Weigend, Florian and Ahlrichs, Reinhart},
+  title   = {Balanced basis sets of split valence, triple zeta valence and
+             quadruple zeta valence quality for {H} to {Rn}: design and
+             assessment of accuracy},
+  journal = {Physical Chemistry Chemical Physics},
+  volume  = {7},
+  number  = {18},
+  pages   = {3297--3305},
+  year    = {2005},
+  doi     = {10.1039/b508541a}
+}
+
+% ATENCAO: titulo, autores, periodico, volume, paginas e DOI estavam TODOS
+% incorretos. O PDF do projeto e o artigo abaixo, do Journal of the Taiwan
+% Institute of Chemical Engineers. Confirmar o DOI na pagina do periodico.
+@article{xu2022,
+  author  = {Xu, Dongmei and He, Shanshan and Yuan, Chengyi and
+             Peng, Lijie and Fan, Wenyang and Huang, Huiwen and
+             Gao, Jun and Wang, Yinglong},
+  title   = {Liquid-liquid equilibrium and insights of intermolecular
+             interactions for separation of isopropyl acetate +
+             isopropanol by imidazolium-based ionic liquids},
+  journal = {Journal of the Taiwan Institute of Chemical Engineers},
+  volume  = {140},
+  pages   = {104571},
+  year    = {2022},
+  doi     = {10.1016/j.jtice.2022.104571}
+}

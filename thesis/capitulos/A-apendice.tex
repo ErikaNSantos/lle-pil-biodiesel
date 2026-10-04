@@ -1,0 +1,215 @@
+\begin{apendicesenv}
+
+\chapter{Trechos-chave da implementação computacional}
+\label{apendice:codigo}
+
+O código-fonte completo desenvolvido para este trabalho, incluindo a implementação do UNIFAC-LL, o adaptador do COSMO-SAC via JCOSMO, o motor de cálculo de equilíbrio (estabilidade, flash e varredura da grade ternária), o solver do ponto crítico e os scripts de execução em lote, está disponível em \url{https://github.com/ErikaNSantos/lle-pil-biodiesel}. Este apêndice reproduz três trechos considerados centrais para a compreensão do método computacional descrito no Capítulo~\ref{cap:metodologia}: o critério de estabilidade de fases pelo plano tangente (TPD), o cálculo de flash líquido-líquido por Rachford-Rice, e o solver do ponto crítico por encolhimento da região instável.
+
+\section{Critério de estabilidade pelo plano tangente (TPD)}
+\label{apendice:tpd}
+
+O trecho a seguir, extraído do módulo \texttt{thermo\_engine.py}, implementa o teste de estabilidade descrito na Seção~\ref{sec:ell_fundamentos} (Equação~\ref{eq:tpd}). A função minimiza a distância ao plano tangente $D(\mathbf{w})$ a partir de múltiplos pontos de partida (cada vértice puro e sorteios de Dirichlet), classificando a composição como instável sempre que o mínimo encontrado for inferior ao limiar \texttt{D\_THRESHOLD}. Pontos em que todas as tentativas produzem $D$ não finito (indício de \textit{overflow} do modelo em cantos do simplex) são sinalizados como inválidos, e não são silenciosamente tratados como estáveis.
+
+\begin{lstlisting}[language=Python, basicstyle=\small\ttfamily, breaklines=true, caption={Teste de estabilidade pelo critério do plano tangente (thermo\_engine.py).}]
+def is_unstable(model, z, log_callback=None):
+    z = np.asarray(z, dtype=float)
+    z = z / z.sum()
+    ln_a_z = _ln_activity(model, z)
+    n = model.n
+
+    if not np.all(np.isfinite(ln_a_z)):
+        return False, z, np.nan, True
+
+    def obj(u_free):
+        w = _softmax_fixed(u_free)
+        wc = np.clip(w, 1e-300, None)
+        ln_a_w = np.log(wc) + np.log(model.gamma(w))
+        return float(np.sum(w * (ln_a_w - ln_a_z)))
+
+    starts = []
+    big = 8.0
+    for i in range(n):
+        w0 = np.full(n, np.exp(-big))
+        w0[i] = 1.0
+        w0 = w0 / w0.sum()
+        starts.append(w0)
+    rng = np.random.default_rng(RANDOM_SEED)
+    for _ in range(N_RANDOM_STARTS):
+        starts.append(rng.dirichlet(np.ones(n)))
+
+    best_D = np.inf
+    best_w = z.copy()
+    any_finite = False
+    for w0 in starts:
+        w0 = np.clip(w0, 1e-12, None)
+        w0 = w0 / w0.sum()
+        u0 = np.log(w0[1:] / w0[0])
+        res = minimize(obj, u0, method="L-BFGS-B",
+                       options={"maxiter": 200, "ftol": 1e-12, "gtol": 1e-8})
+        w = _softmax_fixed(res.x)
+        D = obj(res.x)
+        if np.isfinite(D):
+            any_finite = True
+            if D < best_D:
+                best_D = D
+                best_w = w
+
+    if not any_finite:
+        return False, z, np.nan, True
+
+    return (best_D < D_THRESHOLD), best_w, best_D, False
+\end{lstlisting}
+
+\section{Flash líquido-líquido (Rachford-Rice)}
+\label{apendice:flash}
+
+O trecho a seguir, também extraído do módulo \texttt{thermo\_engine.py}, resolve o cálculo de flash líquido-líquido por substituições sucessivas, com a equação de Rachford-Rice resolvida a cada iteração por busca de raiz (\texttt{brentq}) na janela física de $\psi$ (fração da fase não trivial). A solução só é aceita se satisfizer simultaneamente os critérios de não trivialidade ($0{,}01 < \psi < 0{,}99$), separação mínima entre as fases e balanço de massa.
+
+\begin{lstlisting}[language=Python, basicstyle=\small\ttfamily, breaklines=true, caption={Flash ELL por substituições sucessivas (thermo\_engine.py).}]
+def flash(model, z, xa0=None, xb0=None):
+    z = np.asarray(z, dtype=float)
+    z = z / z.sum()
+
+    xa_ini = np.asarray(xa0, float) if xa0 is not None else XA0
+    xb_ini = np.asarray(xb0, float) if xb0 is not None else XB0
+    xa_ini = xa_ini / xa_ini.sum()
+    xb_ini = xb_ini / xb_ini.sum()
+
+    K = xb_ini / xa_ini
+    xa, xb, psi = xa_ini.copy(), xb_ini.copy(), 0.5
+    converged = False
+
+    for _ in range(SS_MAX_ITER):
+        psi = _solve_rachford_rice(z, K)
+        if psi is None:
+            break
+
+        denom = 1.0 + psi * (K - 1.0)
+        xa = z / denom
+        xb = K * xa
+        xa = np.clip(xa, 0.0, None); xa = xa / xa.sum()
+        xb = np.clip(xb, 0.0, None); xb = xb / xb.sum()
+
+        ga = model.gamma(xa)
+        gb = model.gamma(xb)
+        K_new = ga / gb
+
+        diff = float(np.sum((K_new - K) ** 2))
+        K = K_new
+        if diff < SS_TOL:
+            converged = True
+            break
+
+    if not converged:
+        return None
+
+    psi = _solve_rachford_rice(z, K)
+    if psi is None:
+        return None
+    denom = 1.0 + psi * (K - 1.0)
+    xa = z / denom; xa = np.clip(xa, 0.0, None); xa = xa / xa.sum()
+    xb = K * (z / denom); xb = np.clip(xb, 0.0, None); xb = xb / xb.sum()
+
+    if xa[0] < xb[0]:
+        xa, xb = xb, xa
+        psi = 1.0 - psi
+
+    if not (PSI_MIN < psi < PSI_MAX):
+        return None
+    if np.max(np.abs(xa - xb)) <= DIST_MIN:
+        return None
+    mb = np.max(np.abs(z - ((1.0 - psi) * xa + psi * xb)))
+    if mb >= MB_TOL:
+        return None
+
+    ga = model.gamma(xa); gb = model.gamma(xb)
+    iso = float(np.max(np.abs(xa * ga - xb * gb)))
+
+    return {"xa": xa, "xb": xb, "psi": float(psi),
+            "mass_balance": float(mb), "isoactivity": iso}
+\end{lstlisting}
+
+\section{Solver do ponto crítico (encolhimento da região instável)}
+\label{apendice:plait}
+
+O trecho a seguir, extraído do módulo \texttt{plait\_solver.py}, localiza o ponto crítico (\textit{plait point}) do sistema ternário por meio da varredura da largura da região instável ao longo de uma das composições independentes, extrapolando essa largura até zero e refinando o resultado por bisseção. O método evita a instabilidade numérica de um Newton-Raphson direto na condição crítica de terceira ordem, que dependeria de derivadas terceiras de $g$ por diferença finita.
+
+\begin{lstlisting}[language=Python, basicstyle=\small\ttfamily, breaklines=true, caption={Localização do ponto crítico por encolhimento da região instável (plait\_solver.py).}]
+def solve_plait_point(model, x0=None, tol=1e-9, max_iter=80,
+                      h=1e-4, h_outer=1e-3, verbose=False):
+    if getattr(model, "n", 3) != 3:
+        raise ValueError("solver aplicavel apenas a sistemas ternarios")
+
+    x2_grid = np.linspace(0.02, 0.97, 60)
+    dados = []
+    for x2 in x2_grid:
+        w, x3m = _unstable_width(model, x2, h=h)
+        if w > 0:
+            dados.append((x2, w, x3m))
+    if len(dados) < 3:
+        return {"converged": False,
+                "reason": "regiao instavel ausente/pequena", "x": None}
+
+    dados = np.array([(d[0], d[1], d[2]) for d in dados])
+    x2v, wv, x3v = dados[:, 0], dados[:, 1], dados[:, 2]
+
+    if wv[-1] <= wv[0]:
+        sel = slice(-6, None)
+        side = "x2_alto"
+    else:
+        sel = slice(0, 6)
+        side = "x2_baixo"
+
+    x2s, ws, x3s = x2v[sel], wv[sel], x3v[sel]
+    A = np.polyfit(x2s, ws, 1)
+    if abs(A[0]) < 1e-12:
+        return {"converged": False,
+                "reason": "largura nao extrapola a zero", "x": None}
+    x2_crit = -A[1] / A[0]
+    B = np.polyfit(x2s, x3s, 1)
+
+    if side == "x2_alto":
+        x2_lo = x2s[-1]
+        x2_hi = max(x2_crit, x2_lo + 1e-4)
+    else:
+        x2_hi = x2s[0]
+        x2_lo = min(x2_crit, x2_hi - 1e-4)
+
+    def largura_em(x2q):
+        w, _ = _unstable_width(model, float(np.clip(x2q, 0.001, 0.999)), h=h)
+        return w
+
+    lo, hi = (x2_lo, x2_hi) if side == "x2_alto" else (x2_hi, x2_lo)
+    w_lo = largura_em(lo)
+    w_hi = largura_em(hi)
+    tries = 0
+    while w_hi > 0 and tries < 20:
+        step = (hi - lo)
+        hi = hi + step
+        w_hi = largura_em(hi)
+        tries += 1
+    if w_lo > 0 and w_hi == 0:
+        for _ in range(60):
+            mid = 0.5 * (lo + hi)
+            if largura_em(mid) > 0:
+                lo = mid
+            else:
+                hi = mid
+        x2_crit = lo
+
+    x3_crit = B[0] * x2_crit + B[1]
+    x1_crit = 1.0 - x2_crit - x3_crit
+
+    x = np.array([x1_crit, x2_crit, x3_crit])
+    if np.any(x < -1e-3) or np.any(x > 1 + 1e-3):
+        return {"converged": False,
+                "reason": "extrapolacao fora do simplex", "x": x, "side": side}
+    x = np.clip(x, 0.0, 1.0)
+    x = x / x.sum()
+
+    w_final, _ = _unstable_width(model, float(np.clip(x[1], 0.02, 0.97)), h=h)
+    return {"converged": True, "x": x, "residual_width": float(w_final),
+            "side": side, "n_iter": 1}
+\end{lstlisting}
+
+\end{apendicesenv}

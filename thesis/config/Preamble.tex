@@ -1,0 +1,59 @@
+% --- PACOTES BÁSICOS ---
+\usepackage{lmodern}            % Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}        % Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}     % Codificacao do documento
+\usepackage{lastpage}           % Usado pela Ficha catalográfica
+\usepackage{listings}           % Para o ambiente lstlisting
+%\usepackage{geometry}           %Usado pra alterar as margens pra capa.
+\usepackage{indentfirst}        % Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}              % Controle das cores
+\usepackage{graphicx}
+% Inclusão de gráficos e imagens
+\usepackage{microtype}          % para melhorias de justificação
+\usepackage{mathtools}          % Matemática
+\usepackage{multirow}  
+\usepackage{longtable}
+% Tabelas
+%\usepackage{natbib}             % Citações bibliográficas
+
+\usepackage[table,xcdraw]{xcolor} % Tabelas (cores)
+\usepackage{float}              % Para que o posicionamento funcione
+
+% --- PACOTES ADICIONAIS ---
+\usepackage{epigraph}
+\usepackage{amssymb}
+\usepackage{subcaption}
+\usepackage[export]{adjustbox}
+\usepackage{wrapfig}
+\usepackage{amsmath}
+\usepackage{pdfpages}
+\usepackage{rotating}
+\usepackage{pdflscape}
+\usepackage{lipsum}             % Geração de dummy text
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, calc}
+\tikzset{
+  mecanismo/.style={
+    red,
+    line width=0.5pt,
+    shorten <=4pt,
+    shorten >=4pt,
+    -{Stealth[length=2mm, width=1.5mm]}
+  }
+}
+\usetikzlibrary{fit}
+\usetikzlibrary{calc}
+\usepackage{transparent}
+\usepackage{import}
+% --- PACOTES DE QUIMICA ---
+\usepackage{chemfig}
+\setchemfig{atom sep=2em}
+\usepackage[version=4]{mhchem}
+\usepackage[modules=all]{chemmacros}
+\usepackage{float}
+\usepackage{tgpagella}
+\linespread{1.5}
+
+% --- PACOTES DE CITAÇÕES ---
+\usepackage[brazilian,hyperpageref]{backref}  % Paginas com as citações na .bib
+\usepackage[alf,abnt-etal-list=0,abnt-etal-cite=6]{abntex2cite} % Citação ABNT

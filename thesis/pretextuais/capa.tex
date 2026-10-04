@@ -1,0 +1,106 @@
+% ======================================================================
+%  CAPA — UFBA / Escola Politécnica / Eng. Química / PRH
+% ======================================================================
+
+% --- Fonte da capa ---
+\newcommand{\capaFamilia}{\rmfamily} % Força a fonte Palatino do seu texto
+
+% --- Cores das faixas laterais --- 
+\definecolor{capaAzul}{HTML}{4472C4}
+\definecolor{capaVerde}{HTML}{26F22B}
+
+% --- Geometria das faixas (medidas a partir da borda esquerda da folha) ---
+\newcommand{\faixaAzulInicio}{18.7mm}
+\newcommand{\faixaAzulFim}{29.0mm}
+\newcommand{\faixaVerdeInicio}{28.8mm}
+\newcommand{\faixaVerdeFim}{33.2mm}
+
+% --- Caminhos dos logos (Ajustados para a sua pasta de imagens) ---
+\newcommand{\logoPRH}{imagens/logo_prh_pequeno}
+\newcommand{\logoUFBA}{imagens/logo_ufba}
+\newcommand{\logoANP}{imagens/logo_anp}
+\newcommand{\logoPRHprog}{imagens/logo_prh_circulo}
+\newcommand{\logoFinep}{imagens/logo_finep}
+
+\newcommand{\logo}[3]{%
+  \IfFileExists{#1.svg}{\includegraphics[#2]{#1}}{%
+  \IfFileExists{#1.pdf}{\includegraphics[#2]{#1}}{%
+  \IfFileExists{#1.png}{\includegraphics[#2]{#1}}{%
+  \IfFileExists{#1.jpg}{\includegraphics[#2]{#1}}{%
+    \fbox{\parbox[c][2.2cm][c]{2.8cm}{\centering\footnotesize\ttfamily #3}}%
+  }}}}%
+}
+
+\thispagestyle{empty}
+
+% Faixas verticais à esquerda e posicionamento absoluto do logo PRH
+\begin{tikzpicture}[remember picture, overlay]
+  % Faixa Azul
+  \fill[capaAzul]
+    ([xshift=\faixaAzulInicio]current page.north west) rectangle
+    ([xshift=\faixaAzulFim]current page.south west);
+  % Faixa Verde
+  \fill[capaVerde]
+    ([xshift=\faixaVerdeInicio]current page.north west) rectangle
+    ([xshift=\faixaVerdeFim]current page.south west);
+    
+  % SOLUÇÃO: Posiciona o logo do PRH exatamente no centro geométrico das listras (25.95mm)
+  % O yshift=-1.4cm alinha o topo dele perfeitamente com o topo dos outros logos da direita.
+  \node[anchor=north, inner sep=0pt] at ([xshift=31.95mm, yshift=-2.0cm]current page.north west) {
+    \logo{\logoPRHprog}{height=4.5cm}{PRH 36}
+  };
+\end{tikzpicture}
+
+% 1. Puxa o início da área útil para cima (combina com o yshift da listra)
+\vspace*{-1.6cm}
+
+% 2. Afasta todo o bloco de texto para a direita (fora das listras) e limita a largura
+\hspace*{1.4cm}%
+\begin{minipage}{\dimexpr\textwidth-3cm\relax}
+\capaFamilia
+\centering
+
+% ---------- LOGOS DA DIREITA ----------
+% Como o PRH foi para a listra, os outros 4 logos ficam centralizados na área branca
+\vspace*{0cm} 
+{\centering
+  \renewcommand{\arraystretch}{1.6}%
+  \begin{tabular}{cc}
+    \logo{\logoUFBA}{height=2.2cm}{UFBA} &
+    \logo{\logoANP}{height=1.6cm}{anp} \\
+    \logo{\logoPRH}{height=1.4cm}{prh} &
+    \logo{\logoFinep}{height=1.4cm}{Finep} \\
+  \end{tabular}\par
+}%
+
+% ---------- CABEÇALHO INSTITUCIONAL ----------
+\vspace{0.9cm}
+{\Large\bfseries
+    UNIVERSIDADE FEDERAL DA BAHIA\\
+    ESCOLA POLITÉCNICA\\
+    CURSO DE GRADUAÇÃO EM ENGENHARIA QUÍMICA}
+
+\vspace{0.2cm}
+{\large\bfseries
+  PROGRAMA DE RECURSOS HUMANOS EM PETRÓLEO E MEIO AMBIENTE DA UNIVERSIDADE FEDERAL DA BAHIA\par}
+
+% ---------- AUTOR ----------
+\vspace{1.5cm}
+{\large\bfseries \imprimirautor \par}
+
+% ---------- TÍTULO ----------
+\vspace{1.5cm}
+{\large\bfseries
+  \imprimirtitulo \par}
+
+% ---------- ORIENTADOR ----------
+\vspace{1.5cm}
+{\large \imprimirorientador \par}
+
+% ---------- LOCAL E ANO ----------
+\vspace{0.5cm}
+{\large\bfseries
+  SALVADOR-BA\\
+  2026\par}
+
+\end{minipage}
