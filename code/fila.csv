@@ -1,0 +1,26 @@
+oleo,alcool,li,modelo,n_grid
+# Fila de exemplo. Edite a vontade. Linhas com # sao ignoradas.
+# Colunas: oleo, alcool, li, modelo (UNIFAC-LL ou COSMO-SAC), n_grid (opcional)
+# Chaves validas:
+#   oleo:   trioleina, trilinoleina, trilinolenina, triricinoleina,
+#           tripalmitina, triestearina, acido_oleico, acido_linoleico,
+#           acido_ricinoleico
+#   alcool: metanol, etanol, 1-propanol
+#   li:     2HEAHX, DETAHX
+acido_oleico,etanol,2HEAHX,UNIFAC-LL,30
+acido_oleico,etanol,DETAHX,UNIFAC-LL,30
+acido_oleico,metanol,2HEAHX,UNIFAC-LL,30
+acido_oleico,metanol,DETAHX,UNIFAC-LL,30
+acido_linoleico,etanol,2HEAHX,UNIFAC-LL,30
+acido_linoleico,etanol,DETAHX,UNIFAC-LL,30
+acido_linoleico,metanol,2HEAHX,UNIFAC-LL,30
+acido_linoleico,metanol,DETAHX,UNIFAC-LL,30
+acido_oleico,etanol,2HEAHX,COSMO-SAC,30
+acido_oleico,etanol,DETAHX,COSMO-SAC,30
+acido_oleico,metanol,2HEAHX,COSMO-SAC,30
+acido_oleico,metanol,DETAHX,COSMO-SAC,30
+acido_linoleico,etanol,2HEAHX,COSMO-SAC,30
+acido_linoleico,etanol,DETAHX,COSMO-SAC,30
+acido_linoleico,metanol,2HEAHX,COSMO-SAC,30
+acido_linoleico,metanol,DETAHX,COSMO-SAC,30
+

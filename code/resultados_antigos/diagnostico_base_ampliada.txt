@@ -1,0 +1,24 @@
+======================================================================
+DIAGNOSTICO — REESTIMACAO COM BASE AMPLIADA
+======================================================================
+
+Sistemas usados na calibracao (Souza et al. 2025):
+  Butil acetato  (C6) + 2-HEAB + Etanol: 9 tie-lines
+  Pentil acetato (C7) + 2-HEAB + Etanol: 6 tie-lines
+  Hexil acetato  (C8) + 2-HEAB + Etanol: 9 tie-lines
+  TOTAL:                                 24 tie-lines
+
+Parametros estimados:
+  a(CCOO, CNH2) =  +5884.1 K
+  a(CNH2, CCOO) =  +3952.2 K
+  a(CNH2, COO)  =  -5089.2 K
+  a(COO, CNH2)  =   -292.7 K
+
+Magnitude maxima: 5884 K
+  (vs ~2000 na estimacao com hexil-only)
+
+RMSD por sistema:
+  butil     : 0.0561
+  pentil    : 0.0564
+  hexil     : 0.0473
+  Combinado: 0.0530

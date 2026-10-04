@@ -1,0 +1,49 @@
+================================================================================
+EFEITO DA CONCENTRACAO DE LIP — TABELA QUANTITATIVA
+================================================================================
+
+Razao molar trioleina:etanol = 1:6 (estequiometrica)
+Parametros UNIFAC: V2 base ampliada (a = (3567.0, 3113.0, -3302.0, 81.0))
+
+--- Sistema: Trioleina + Etanol + [2-HEA][Hx] ---
+    %LIP  estado         K_triol   gap_x_triol   x_triol_oleosa   x_triol_polar
+      0%  bifasico          1.00        0.0000           0.1429          0.1429
+      1%  bifasico         56.33        0.1504           0.1531          0.0027
+      2%  bifasico         64.30        0.1611           0.1637          0.0025
+      5%  bifasico         93.85        0.1938           0.1959          0.0021
+     10%  bifasico        163.24        0.2481           0.2496          0.0015
+     15%  bifasico        260.04        0.3006           0.3017          0.0012
+     20%  bifasico        386.66        0.3512           0.3521          0.0009
+     25%  bifasico        545.06        0.4000           0.4007          0.0007
+     30%  bifasico        736.61        0.4473           0.4479          0.0006
+     35%  bifasico        962.08        0.4932           0.4937          0.0005
+     40%  bifasico       1221.67        0.5378           0.5382          0.0004
+
+  Sistema permanece bifasico em toda a faixa 0-40% LIP
+
+--- Sistema: Trioleina + Etanol + [DETA][Hx] ---
+    %LIP  estado         K_triol   gap_x_triol   x_triol_oleosa   x_triol_polar
+      0%  bifasico          1.00        0.0000           0.1429          0.1429
+      1%  bifasico         18.36        0.1540           0.1629          0.0089
+      2%  bifasico         22.12        0.1744           0.1827          0.0083
+      5%  bifasico         35.01        0.2321           0.2389          0.0068
+     10%  bifasico         60.73        0.3165           0.3218          0.0053
+     15%  bifasico         90.94        0.3896           0.3939          0.0043
+     20%  bifasico        125.05        0.4543           0.4579          0.0037
+     25%  bifasico        162.52        0.5123           0.5154          0.0032
+     30%  bifasico        202.76        0.5647           0.5675          0.0028
+     35%  bifasico        245.20        0.6126           0.6151          0.0025
+     40%  bifasico        289.32        0.6564           0.6587          0.0023
+
+  Sistema permanece bifasico em toda a faixa 0-40% LIP
+
+================================================================================
+COMPARACAO ENTRE LIPs
+================================================================================
+
+  Pelo menos um sistema permanece bifasico em toda a faixa testada.
+  Nesse caso, comparar pelo K_triol em %LIP fixos:
+
+  %LIP =  5.0%:  K_triol([2-HEA]) = 93.85258807744628  K_triol([DETA])  = 35.014286162220536
+  %LIP = 15.0%:  K_triol([2-HEA]) = 260.0408113539538  K_triol([DETA])  = 90.93599698649392
+  %LIP = 30.0%:  K_triol([2-HEA]) = 736.6096107829773  K_triol([DETA])  = 202.75722849913572

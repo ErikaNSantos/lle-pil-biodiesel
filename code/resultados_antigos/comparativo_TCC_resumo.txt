@@ -1,0 +1,51 @@
+================================================================================
+COMPARATIVO QUANTITATIVO DAS 3 VERSOES — SISTEMAS-ALVO
+================================================================================
+
+Notacao:
+  n_tl       = numero de tie-lines bifasicas em grid 20x20
+  bif_frac   = fracao da regiao bifasica (~ n_tl / 210)
+  K_triol    = coef. particao da trioleina = x_triol(oleosa) / x_triol(polar)
+  x_T_oleosa = x_trioleina medio na fase oleosa
+
+--- Trioleina + Etanol + [2-HEA][Hx] ---
+  Versao  Params                         n_tl   bif_frac   K_triol_med    x_T_oleosa
+  V1      (+2000,+2000,-2000,-300)        171      0.814        6007.4         0.674
+  V2      (+3567,+3113,-3302,+81)         171      0.814        2917.0         0.689
+  V3      (+480,+719,-792,-680)           171      0.814        6336.8         0.661
+
+--- Trioleina + Etanol + [DETA][Hx] ---
+  Versao  Params                         n_tl   bif_frac   K_triol_med    x_T_oleosa
+  V1      (+2000,+2000,-2000,-300)        171      0.814        1323.7         0.722
+  V2      (+3567,+3113,-3302,+81)         171      0.814         439.0         0.743
+  V3      (+480,+719,-792,-680)           171      0.814        2683.2         0.694
+
+================================================================================
+COMPARACAO ENTRE LIPs PARA CADA VERSAO
+================================================================================
+
+Hipotese (Trindade et al. 2019): [DETA][Hx] e cossolvente MAIS eficiente
+que [2-HEA][Hx] -> espera-se MENOR regiao bifasica para [DETA].
+
+  Versao   n_TLs [2-HEA]    n_TLs [DETA]     Trindade?
+  V1                 171             171      = empate
+  V2                 171             171      = empate
+  V3                 171             171      = empate
+
+================================================================================
+ANALISE QUALITATIVA
+================================================================================
+
+Criterios para escolha da versao a apresentar no TCC:
+
+1. PLAUSIBILIDADE FISICA da regiao bifasica:
+   - bif_frac proximo de 0  ->  monofasico (improvavel para LIP)
+   - bif_frac proximo de 1  ->  bifasico em quase todo simplex (irreal)
+   - bif_frac em 0.2-0.6   ->  faixa fisicamente esperada
+
+2. CONSISTENCIA COM TRINDADE: regiao bifasica menor para [DETA] que [2-HEA]
+
+3. AJUSTE AOS DADOS DE SOUZA (calibracao):
+   V1 (hexil-only):    RMSD = 0.047 (mas em 1 sistema apenas)
+   V2 (base ampliada): RMSD = 0.045 (em 3 sistemas, melhor robustez)
+   V3 (bounded):       RMSD = 0.055 (15% pior que V1)
